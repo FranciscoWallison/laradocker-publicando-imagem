@@ -4,11 +4,15 @@ services:
 
     app:
         build: .
-        container_name: app-laravel
+        container_name: app-laravel        
         volumes:
             - .:/var/www
         networks:
             - app-network
+        depends_on:
+            - db
+            - redis
+        entrypoint: dockerize -wait tcp://db:3306 -timeout 40s php-fpm
 
     nginx:
         build: .docker/nginx
@@ -21,6 +25,8 @@ services:
             - .:/var/www
         networks:
             - app-network
+        depends_on:
+            - app
         
     
     db:
