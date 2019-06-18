@@ -1,4 +1,4 @@
-## Configure um ambiente de desenvolvimento com Laravel utilizando
+## Ambiente de desenvolvimento com Laravel
 #### [Nginx push chicowall/nginx-laravel:v1](https://cloud.docker.com/u/chicowall/repository/docker/chicowall/nginx-laravel)
 #### [PHP-FPM chicowall/app-laravel:v1](https://cloud.docker.com/u/chicowall/repository/docker/chicowall/app-laravel)
 #### [Redis chicowall/redis-laravel:v1](https://cloud.docker.com/u/chicowall/repository/docker/chicowall/redis-laravel)
