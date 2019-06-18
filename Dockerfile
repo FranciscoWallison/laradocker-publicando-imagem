@@ -21,7 +21,7 @@ EXPOSE 9000
 
 RUN composer update
 
-RUN chmod 777 -R /var/www/.docker/entrypoints/entrypoint.sh
-RUN /bin/bash -c "source /var/www/.docker/entrypoints/entrypoint.sh"
+#RUN chmod 777 -R /var/www/.docker/entrypoints/entrypoint.sh
+#RUN /bin/bash -c "source /var/www/.docker/entrypoints/entrypoint.sh"
 
 ENTRYPOINT ["php-fpm"]
