@@ -12,6 +12,7 @@ services:
         depends_on:
             - db
             - redis
+        entrypoint: chmod 777 ./.docker/entrypoints/entrypoint.sh
         entrypoint: dockerize -wait tcp://db:3306 -timeout 40s php-fpm
 
     nginx:
