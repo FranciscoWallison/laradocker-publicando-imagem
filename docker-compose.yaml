@@ -4,7 +4,7 @@ services:
 
     app:
         build: .
-        container_name: app
+        container_name: app-laravel
         volumes:
             - .:/var/www
         networks:
@@ -12,11 +12,11 @@ services:
 
     nginx:
         build: .docker/nginx
-        container_name: nginx
+        container_name: nginx-laravel
         restart: always
         tty: true
         ports:
-            - "8000:80"
+            - "80:80"
         volumes:
             - .:/var/www
         networks:
@@ -26,7 +26,7 @@ services:
     db:
         image: mysql:5.7
         command: --innodb-use-native-aio=0
-        container_name: db
+        container_name: db-laravel
         restart: always
         tty: true
         ports:
@@ -41,6 +41,7 @@ services:
             - app-network
         
     redis: 
+        container_name: redis-laravel
         image: redis:alpine
         expose:
             - 6379
