@@ -1,5 +1,5 @@
 FROM php:7.3.6-fpm-alpine3.9
-RUN apk add --no-cache openssl bash mysql-client
+RUN apk add --no-cache openssl bash mysql-client dos2unix 
 RUN docker-php-ext-install pdo pdo_mysql 
 
 ENV DOCKERIZE_VERSION v0.6.1
@@ -18,10 +18,4 @@ COPY . /var/www
 RUN ln -s public html
 
 EXPOSE 9000
-
-RUN composer update
-
-#RUN chmod 777 -R /var/www/.docker/entrypoints/entrypoint.sh
-#RUN /bin/bash -c "source /var/www/.docker/entrypoints/entrypoint.sh"
-
 ENTRYPOINT ["php-fpm"]

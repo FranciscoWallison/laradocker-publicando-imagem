@@ -1,12 +1,11 @@
 #!/bin/bash
-#composer install
-#php artisan migrate
 
-if [ ! -e "/vendor" ]
-then
-echo " o diretorio existe"
-php artisan migrate
+if [ ! -e "/vendor" ];then
+	echo " Execultar 'composer install'"
+	
 else
-echo " o diretorio não existe vamos criar o diretorio"
+	echo " Criando as tabelas "
+	php artisan migrate
 fi
 
+php-fpm
