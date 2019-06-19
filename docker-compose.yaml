@@ -13,7 +13,14 @@ services:
             - db
             - redis
         entrypoint: chmod 777 ./.docker/entrypoints/entrypoint.sh
-        entrypoint: dockerize -wait tcp://db:3306 -timeout 40s .docker/entrypoints/entrypoint.sh php-fpm
+        entrypoint: dockerize -template ./.docker/app/.env:.env -wait tcp://db:3306 -timeout 40s .docker/entrypoints/entrypoint.sh php-fpm
+        environment:
+            - DB_HOST=db-laravel
+            - DB_PORT=3306
+            - DB_DATABASE=laravel
+            - DB_USERNAME=root
+            - DB_PASSWORD=root
+
 #       entrypoint: sh .docker/entrypoints/entrypoint.sh
 
     nginx:
@@ -43,8 +50,8 @@ services:
             - ./.docker/dbdata:/var/lib/mysql
         environment:
             - MYSQL_DATABASE=laravel
-            - MYSQL_ROOT_PASSWORD=root
             - MYSQL_USER=root
+            - MYSQL_ROOT_PASSWORD=root            
         networks:
             - app-network
         
