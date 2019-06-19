@@ -1,11 +1,13 @@
 #!/bin/bash
 
 if [ ! -e "/vendor" ];then
-	echo " Execultar 'composer install'"
-	
-else
-	echo " Criando as tabelas "
-	php artisan migrate
+	echo " Execultando 'composer install...'"
+	composer install
 fi
+
+echo " Artisan ... "
+php artisan key:generate
+php artisan migrate
+	
 
 php-fpm
