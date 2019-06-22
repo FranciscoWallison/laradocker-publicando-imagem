@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 echo " Execultando 'composer install...'"
 composer install
 echo " Execultando 'npm install...'"
