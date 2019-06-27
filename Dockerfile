@@ -7,16 +7,17 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
+RUN echo "install composer"
+
 WORKDIR /var/www
 RUN rm -rf /var/www/html
+RUN ln -s public html
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# RUN composer install
-# COPY . /var/www
-
-RUN ln -s public html
+RUN echo "install composer"
+ENTRYPOINT ["dos2unix", "./.docker/entrypoints/entrypoint.sh"] 
 
 EXPOSE 9000
 ENTRYPOINT ["php-fpm"]
