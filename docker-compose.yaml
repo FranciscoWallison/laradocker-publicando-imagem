@@ -33,7 +33,7 @@ services:
             - app-network
         depends_on:
             - app
-        nvironment:
+        environment:
             - NX_HOST=localhost
             - NX_PORT=80
         
