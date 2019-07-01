@@ -34,8 +34,8 @@ services:
         depends_on:
             - app
         environment:
-            - NX_HOST=localhost
-            - NX_PORT=80
+            - NX_HOST=app
+            - NX_PORT=9000
         
     
     db:
