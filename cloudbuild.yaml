@@ -21,7 +21,7 @@ steps:
 
 - id: "Rodando .env"
   name: 'gcr.io/cloud-builders/docker'
-  args: ['exec', '-t', 'app-laravel', 'cp', '.env.exampple', '.env']
+  args: ['exec', '-t', 'app-laravel', 'cp', '.env.example', '.env']
 
 - id: "Rodando key:generate"
   name: 'gcr.io/cloud-builders/docker'
