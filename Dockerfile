@@ -17,9 +17,9 @@ COPY . /var/www
 
 RUN cp ./.docker/app/.env .env.example
 
-RUN composer install && \
-           php artisan key:generate && \
-           php artisan config:cache
+# RUN composer install && \
+#            php artisan key:generate && \
+#            php artisan config:cache
 
 
 RUN ln -s public html
