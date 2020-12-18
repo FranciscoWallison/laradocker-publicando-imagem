@@ -13,8 +13,8 @@ RUN rm -rf /var/www/html
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-COPY . /var/www
-RUN cp ./.docker/app/.env .env
+# COPY . /var/www
+# RUN cp ./.docker/app/.env .env
 # RUN composer install && \
 #            cp .env.example .env && \
 #            php artisan key:generate && \
