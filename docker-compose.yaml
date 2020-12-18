@@ -39,7 +39,7 @@ services:
         
     
     db:
-        image: mysql:5.7
+        build: .docker/db
         command: --innodb-use-native-aio=0
         container_name: db-laravel
         restart: always
