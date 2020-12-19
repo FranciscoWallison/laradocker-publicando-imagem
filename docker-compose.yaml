@@ -9,22 +9,25 @@ services:
             - .:/var/www
         networks:
             - app-network
+        entrypoint: dockerize -template ./.docker/app/.env:.env -wait tcp://db:3306
+        environment: 
+            - DB_HOST=db
+            - DB_DATABASE=laravel
+            - DB_USERNAME=root
+            - DB_PASSWORD=root
         depends_on:
-            - db-laravel
-            - redis-laravel
-        # entrypoint: dockerize -template ./.docker/app/.env:.env -wait tcp://db:3306 -timeout 40s .docker/entrypoints/entrypoint.sh
-        # environment:
-        #     - DB_HOST=db-laravel
-        #     - DB_PORT=3306
-        #     - DB_DATABASE=laravel
-        #     - DB_USERNAME=root
-        #     - DB_PASSWORD=root
+            - db
+            - redis
 
     nginx:
         build: .docker/nginx
         container_name: nginx-laravel
         restart: always
         tty: true
+        entrypoint: dockerize -template ./.docker/nginx/.nginx.conf.tmpl:/etc/nginx/conf.d/nginx.conf nginx -g "daemon off";
+        environment: 
+            - HOST=APP
+            - PORT=9000
         ports:
             - "80:80"
         volumes:
@@ -32,10 +35,7 @@ services:
         networks:
             - app-network
         depends_on:
-            - app
-        # environment:
-        #     - NX_HOST=app
-        #     - NX_PORT=9000
+            - app        
         
     
     db:
@@ -46,8 +46,8 @@ services:
         tty: true
         ports:
             - "33006:3306"
-        volumes:
-            - ./.docker/dbdata:/var/lib/mysql
+        # volumes:
+        #     - ./.docker/dbdata:/var/lib/mysql
         environment:
             - MYSQL_DATABASE=laravel
             - MYSQL_USER=root
