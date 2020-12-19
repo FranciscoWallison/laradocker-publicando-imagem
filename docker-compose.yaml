@@ -9,11 +9,11 @@ services:
         networks:
             - app-network
         entrypoint: dockerize -template ./.docker/app/.env:.env -wait tcp://db:3306
-        environment: 
-            - DB_HOST=db
-            - DB_DATABASE=laravel
-            - DB_USERNAME=root
-            - DB_PASSWORD=root
+        # environment: 
+        #     - DB_HOST=db
+        #     - DB_DATABASE=laravel
+        #     - DB_USERNAME=root
+        #     - DB_PASSWORD=root
         depends_on:
             - db
             - redis
@@ -45,8 +45,8 @@ services:
         tty: true
         ports:
             - "33006:3306"
-        # volumes:
-        #     - ./.docker/dbdata:/var/lib/mysql
+        volumes:
+            - ./.docker/dbdata:/var/lib/mysql
         environment:
             - MYSQL_DATABASE=laravel
             - MYSQL_USER=root
