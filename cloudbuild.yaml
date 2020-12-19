@@ -29,7 +29,7 @@ steps:
 
 - id: "Copiando .env"
   name: 'gcr.io/cloud-builders/docker'
-  args: ['exec','-t','app-laravel','cp','.env.example','.env']
+  args: ['exec','-t','app-laravel','cp','./.docker/app/.env','.env']
 
 - id: "Rodando key:generate"
   name: 'gcr.io/cloud-builders/docker'
