@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+
+spec:
+  selector:
+    matchLabels:
+      app: app
+
+  template:
+    metadata:
+      labels:
+        app: app
+    # Criando container
+    spec:
+      containers:
+      - name: app
+        image: img-app-deployment # para cada deployment gerar uma imagem
+        ports:
+        - containerPort: 80
+
+        env:
+        - name: DB_PASSWORD
+          valueFrom: # de onde vem o valor
+            secretKeyRef:
+              name: mysql-pass
+              key: password
+
+        envFrom:
+        - configMapRef:
+            name: app-conf
+
+        volumeMounts:
+        - name: app-conf
+          mountPath: /var/www/.env
+          subPath: .env # para criar o arquivo .env
+
+      volumes:
+      - name: app-conf
+        configMap:
+          name: app-conf # do configmap de /app/configmap.yaml
+          items:
+            - key: env
+              path: .env
