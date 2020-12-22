@@ -6,11 +6,13 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ 
 WORKDIR /var/www
 RUN rm -rf /var/www/html
 RUN ln -s public html
+RUN ln -s /var/www /usr/share/nginx
 COPY . /var/www
 
 RUN composer install \
-#    && php artisan migrate \
+#   && php artisan migrate \
     && php artisan cache:clear \ 
+    && php artisan queue:listen \
     && chmod -R 777 storage
 
 EXPOSE 9000
