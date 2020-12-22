@@ -17,7 +17,7 @@ spec:
       containers:
       - name: app
         image: img-app-deployment # para cada deployment gerar uma imagem
-        command: ["/bin/sh", "-c", "ln -s /var/www /usr/share/nginx; chmod 777 k8s/entrypoint.sh; /var/www/k8s/entrypoint.sh; php-fpm;"]
+        # command: ["/bin/sh", "-c", "ln -s /var/www /usr/share/nginx;"]
         ports:
         - containerPort: 80
 
