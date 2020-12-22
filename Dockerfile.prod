@@ -10,7 +10,7 @@ COPY . /var/www
 
 RUN composer install \
 #    && php artisan migrate \
-    && composer require predis/predis \
+#   && composer require predis/predis \
     && php artisan cache:clear \ 
     && chmod -R 777 storage \
     && chmod +x /var/www/k8s/entrypoint.sh
