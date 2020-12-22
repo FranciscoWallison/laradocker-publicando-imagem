@@ -9,11 +9,9 @@ RUN ln -s public html
 COPY . /var/www
 
 RUN composer install \
-#    && php artisan migrate \
+    && php artisan migrate \
     && php artisan cache:clear \ 
-    && chmod 777 storage \
-    && php artisan config:cache \
-    php artisan migrate
+    && chmod -R 777 storage
 
 EXPOSE 9000
 
