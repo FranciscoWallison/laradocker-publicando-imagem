@@ -11,7 +11,9 @@ COPY . /var/www
 RUN composer install \
 #    && php artisan migrate \
     && php artisan cache:clear \ 
-    && chmod -R 777 storage
+    && chmod 777 storage \
+    && php artisan config:cache \
+    php artisan migrate
 
 EXPOSE 9000
 
