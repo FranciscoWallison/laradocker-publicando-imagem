@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
       - name: app
-        image: gcr.io/lithe-booster-286809/app-laravel:566e155 # para cada deployment gerar uma imagem
-        # command: ["/bin/sh", "-c", "ln -s /var/www /usr/share/nginx; php-fpm;"]
+        image: img-app-deployment # para cada deployment gerar uma imagem
+        command: ["/bin/sh", "-c", "ln -s /var/www /usr/share/nginx; chmod 777 k8s/entrypoint.sh; /var/www/k8s/entrypoint.sh; php-fpm;"]
         ports:
         - containerPort: 80
 

@@ -11,7 +11,8 @@ COPY . /var/www
 RUN composer install \
 #    && php artisan migrate \
     && php artisan cache:clear \ 
-    && chmod -R 777 storage
+    && chmod -R 777 storage \ 
+    && chmod 777 k8s/entrypoint.sh
 
 EXPOSE 9000
 
