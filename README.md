@@ -23,6 +23,6 @@
         ° Solução
             - Remover no arquivo ou comentar "./k8s/app/deployment.yaml" na alinha "command:" em spec:
             e containers:, na criação de container.
-            - Quando o k8s criar o POD do "app" avessar o bash e rodar o comando "ln -s /var/www /usr/share/nginx".
+            - Quando o k8s criar o POD do "app" acessar o bash e rodar o comando "ln -s /var/www /usr/share/nginx".
             - Quando o k8s criar o POD do "app", caso der erro de acesso ao banco "laravel", acessar conforme criado
                 a senha para o mysql e dar um "create database laravel".
