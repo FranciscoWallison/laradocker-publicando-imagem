@@ -10,7 +10,7 @@ spec: # spec do deployment
       app: mysql-server
       tier: db
 
-  template: # rerente ao POD
+  template: # referente ao POD
     metadata:
       labels:
         app: mysql-server
