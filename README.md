@@ -11,7 +11,6 @@
 #### [Redis chicowall/redis-laravel:v1](https://cloud.docker.com/repository/docker/chicowall/redis-laravel)
 #### [MySQL chicowall/db-laravel:v1](https://cloud.docker.com/repository/docker/chicowall/db-laravel)
 
-
 ## Nota mental
     ° No windows não consigo dar "CHMOD" no arquivo entrypoint.sh no diretorio 
     ".dokcer/entrypoint.sh", não acha o arquivo no container e container cai.
