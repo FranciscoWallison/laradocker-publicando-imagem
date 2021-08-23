@@ -1,7 +1,6 @@
 
 # Iniciando projeto
 
-
 # Init Go
 #### [Golang chicowall/codeeducation](https://cloud.docker.com/repository/docker/chicowall/codeeducation) 
 
